@@ -1,0 +1,23 @@
+<div class="sticky-top" style="top: 80px;">
+    <div class="card">
+        <div class="card-header" style="border-bottom: 0;font-weight: bold;">
+            Categories
+        </div>
+        <div class="list-group list-group-flush">
+            <a
+                routerLink="/"
+                [class.active]="!selectedCategory"
+                class="list-group-item list-group-item-action">
+                All
+            </a>
+            <a
+                *ngFor="let category of categories$ | async"
+                routerLink="/"
+                [queryParams]="{ category: category.id }"
+                [class.active]="selectedCategory == category.id"
+                class="list-group-item list-group-item-action">
+                {{ category.name }}
+            </a>
+        </div>
+    </div>
+</div>
